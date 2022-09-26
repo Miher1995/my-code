@@ -1,0 +1,22 @@
+ SP Migration process
+1.  screen -S build-farm-trunk-new -> Start screen session (it will work after your network or system goes down also)
+2.Creat repo in mgration server .
+mkdir repo name
+then creat folder like 
+mkdir trunk
+mkdir branch'mkdir tag
+3.then go to any folder where u want to migrate code from svn like trunk ,ranch or tag
+below command to migrate code from svn to GIT Lab
+cd trunk
+build farm trunk - sudo git svn clone https://svn.cssrd.local/CyberTech/BuildServers/build-farm/ --trunk=trunk --preserve-empty-dirs --username bbro
+4.then go to branch
+cd branch
+build farm branches - sudo git svn clone https://svn.cssrd.local/CyberTech/BuildServers/build-farm/ --branches=branches --preserve-empty-dirs --username bbro
+5.
+note:Clone repository component with "git svn".
+Move to the folder where code is cloned.
+add git remote origin- git remote add url of git repo wht u created (git add . >>to add all)
+push the branch on git- git push origin master
+run the verification script.
+
+

@@ -1,0 +1,22 @@
+ CS SVN Migration
+CS SVN VM ->
+ssh -i "rhel-cs-svn.pem" ec2-user@10.220.117.203
+
+Migration data path - /home/ec2-user/CS-SVN
+
+
+10 CS SVN Repositories which I have migrated -  SystemOverview.AuditTrail.FusionSystemOverview.Topology.PluginBuildFarmCoreLibraries.InterfaceCoreLibraries.DataAnnotationsReportingApi.InterfaceReportingAPI.SSRSCoreLibraries.SQLCoreLibraries.MEFSystemOverview.PluginUtils
+
+
+Repository URLhttps://svn.cssrd.local/CyberTech/SystemOverview.AuditTrail.Fusionhttps://svn.cssrd.local/CyberTech/SystemOverview.Topology.Pluginhttps://svn.cssrd.local/CyberTech/BuildServers/build-farmhttps://svn.cssrd.local/CyberTech/CoreLibraries.Interfacehttps://svn.cssrd.local/CyberTech/CoreLibraries.DataAnnotationshttps://svn.cssrd.local/Applications/ReportingApi.Interfacehttps://svn.cssrd.local/Applications/ReportingApi.SSRShttps://svn.cssrd.local/CyberTech/CoreLibraries.SQLhttps://svn.cssrd.local/CyberTech/CoreLibraries.MEFhttps://svn.cssrd.local/CyberTech/SystemOverview.PluginUtils
+
+username - bbropassword - bbro
+
+
+Gitlab url - Projects · fmc-rd / cs / CyberTech / SystemOverview.AuditTrail.Fusion · GitLab (nice.com)
+
+
+10 repositories url's which are migrated on gitlab - Groups · CyberTech · GitLab (nice.com)
+
+https://tlvgit03.nice.com/fmc-rd/cs/cybertech
+

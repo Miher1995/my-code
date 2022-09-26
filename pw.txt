@@ -1,0 +1,28 @@
+rzalani
+R@1234567890_z  Nice.Microsoft.IIS75.AppInitialization
+Gitlab-Jenkins-slave-msbuild-15-VM-miher
+windows machine-
+10.220.117.71-msbuild14
+
+user:Administrator
+pw- Password1!
+
+ 10.220.117.175-orginal msbuild15
+10.220.117.229-msbuild15 testing 
+under cd /c/jenkins/workspace/FMC/CS/Job name/build
+run below cmd
+MSBuild.exe sloutions/jobname/jobname.sln /property:Configuration=Release /property:Platform=x64
+
+jfrog actimizwe
+
+build_server_user
+Bu1ldP@55
+
+How to bring online  slave
+
+go to machine
+
+start the agent file
+and run below cmd insiden /c/jenkins
+
+java -jar agent.jar -jnlpUrl https://ilactcje.nice.com/computer/Gitlab-Jenkins-slave-msbuild-15-VM/slave-agent.jnlp -secret f002fd432d3fffa653915866458f2fa2d39878818c05bf2d4de39e7b874d387f -workDir "C:\work"
