@@ -1,0 +1,43 @@
+image: atlassian/default-image:3
+pipelines: 
+ tags:
+    'v*':
+    - step:
+       name: Build based on Tags
+       runs-on:
+         - "self.hosted"
+         - "linux"
+         - "osiris"
+       services:
+         - docker
+       script: 
+         - docker build -t $ImageName .
+         - docker tag $ImageName $ECR_URI:$BITBUCKET_TAG.$BITBUCKET_BUILD_NUMBER
+         - docker images
+         - apt-get update && apt-get install -y awscli
+         - aws --version
+         - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin $ECR
+         - docker push $ECR_URI:$BITBUCKET_TAG.$BITBUCKET_BUILD_NUMBER
+ branches:
+    '{master}':
+    - step:
+        name: Runner
+        runs-on: 
+         - "self.hosted"
+         - "linux"
+         - "osiris"
+        services:
+         - docker
+        script:
+         - docker version
+         - docker build -t $ImageName .
+         - docker images
+         - docker tag $ImageName $ECR_URI:latest
+         - docker tag $ImageName $ECR_URI:$Major.$Minor.$Patch.$BITBUCKET_BUILD_NUMBER
+         - apt-get update && apt-get install -y awscli
+         - aws --version
+         - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin $ECR
+         - docker push $ECR_URI:$Major.$Minor.$Patch.$BITBUCKET_BUILD_NUMBER
+         - docker push $ECR_URI:latest
+         - ./octo create-release --server "$OctopusURL" --apiKey "$API" --project "$Project" --version "$Major.$Minor.$Patch.$BITBUCKET_BUILD_NUMBER-$appname-dev" --ignoreSslErrors --channel "Default" --ignoreexisting
+         - ./octo deploy-release --server "$OctopusURL" --apiKey "$API" --project "$Project" --deployto "$ENVNAME" --version "$Major.$Minor.$Patch.$BITBUCKET_BUILD_NUMBER-$appname-dev" --variable=App_Name:$appname --variable=namespace:$namespace --ignoreSslErrors
